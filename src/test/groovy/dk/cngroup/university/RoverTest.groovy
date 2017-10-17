@@ -66,15 +66,4 @@ class RoverTest extends  Specification {
         WEST  | NORTH
     }
 
-    @Unroll
-    "should record #Input in String"(String input) {
-        setup:
-        def rover = Mock(Rover)
-
-        when:
-        rover.getInstruction() >> RRFLFRFF
-
-        then:
-        input == RRFLFRFF
-    }
 }
