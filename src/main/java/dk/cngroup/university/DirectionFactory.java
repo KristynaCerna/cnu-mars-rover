@@ -14,6 +14,7 @@ public class DirectionFactory {
             case WEST:
                 return Direction.WEST;
         }
+
         //should never happen
         throw new RuntimeException("unkonwn world side value");
     }
