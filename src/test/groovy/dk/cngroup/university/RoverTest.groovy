@@ -5,52 +5,52 @@ import spock.lang.Unroll
 
 import static dk.cngroup.university.Direction.*
 
-class RoverTest extends Specification {
+class RoverTest extends  Specification {
 
     @Unroll
-    "should return correct direction to WEST"() {
+    "should return correct direction to WEST"(){
         when:
-        def rover = new Rover(WEST)
+            def rover = new Rover (WEST)
         then:
-        rover.getDirection() == WEST
+            rover.getDirection() == WEST
     }
 
     @Unroll
-    "should return correct direction to NORTH"() {
+    "should return correct direction to NORTH"(){
         when:
-        def rover = new Rover(NORTH)
-        then:
-        rover.getDirection() == NORTH
-    }
-
-    @Unroll
-    "should return default direction"() {
-        when:
-        def rover = new Rover()
+        def rover = new Rover (NORTH)
         then:
         rover.getDirection() == NORTH
     }
 
     @Unroll
-    "should turn left from #oldDirection to #newDirection"(Direction oldDirection, Direction newDirection) {
+    "should return default direction"(){
+        when:
+        def rover = new Rover ()
+        then:
+        rover.getDirection() == NORTH
+    }
+
+
+    @Unroll
+    "should turn left from #oldDirection to #newDirection" (Direction oldDirection, Direction newDirection) {
         given:
         def rover = new Rover(oldDirection)
 
         expect:
         newDirection == rover
-                .turnLeft()
-                .getDirection()
-
+                            .turnLeft()
+                            .getDirection()
         where:
-        oldDirection | newDirection
-        NORTH        | WEST
-        WEST         | SOUTH
-        SOUTH        | EAST
-        EAST         | NORTH
+        oldDirection|newDirection
+        NORTH | WEST
+        WEST  | SOUTH
+        SOUTH | EAST
+        EAST  | NORTH
     }
 
     @Unroll
-    "should turn right from #oldDirection to #newDirection"(Direction oldDirection, Direction newDirection) {
+    "should turn right from #oldDirection to #newDirection" (Direction oldDirection, Direction newDirection) {
         given:
         def rover = new Rover(oldDirection)
 
@@ -58,13 +58,23 @@ class RoverTest extends Specification {
         newDirection == rover
                 .turnRight()
                 .getDirection()
-
         where:
-        oldDirection | newDirection
-        NORTH        | EAST
-        WEST         | NORTH
-        SOUTH        | WEST
-        EAST         | SOUTH
+        oldDirection|newDirection
+        NORTH | EAST
+        EAST  | SOUTH
+        SOUTH | WEST
+        WEST  | NORTH
     }
 
+    @Unroll
+    "should record #Input in String"(String input) {
+        setup:
+        def rover = Mock(Rover)
+
+        when:
+        rover.getInstruction() >> RRFLFRFF
+
+        then:
+        input == RRFLFRFF
+    }
 }

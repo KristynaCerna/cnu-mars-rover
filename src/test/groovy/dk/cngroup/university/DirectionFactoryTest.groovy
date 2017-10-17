@@ -6,9 +6,10 @@ import spock.lang.Unroll
 class DirectionFactoryTest extends Specification {
 
     @Unroll
-    "should return #direction from #worldSide"(Direction direction, WorldSide worldSide) {
+    "Should turn #direction from #worldSide"(Direction direction, WorldSide worldSide) {
         expect:
-        direction == DirectionFactory.getDirection(worldSide)
+        direction == DirectionFactory
+        .getDirection(worldSide)
 
         where:
         direction       | worldSide
@@ -21,9 +22,9 @@ class DirectionFactoryTest extends Specification {
     @Unroll
     "should throw exception when null"() {
         when:
-        DirectionFactory.getDirection(null)
+        DirectionFactory.getDirection(side:null)
 
-        then:
-        thrown NullPointerException
-    }
+    then:
+        RuntimeException ex = thrown()
+        }
 }
