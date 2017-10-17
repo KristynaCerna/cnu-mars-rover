@@ -5,6 +5,10 @@ public class Movement {
     private Rover rover;
     private Instruction instruction;
 
+    public void startRunSimulator(String commandChain) {
+        movementInstruction(commandChain);
+    }
+
     public void movementInstruction(String commandChain) {
         for (int i = 0; i < commandChain.length(); i++) {
             switch (instruction) {
