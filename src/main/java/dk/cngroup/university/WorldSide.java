@@ -4,5 +4,6 @@ public enum WorldSide {
     NORTH,
     EAST,
     SOUTH,
-    WEST;
+    WEST
+
 }

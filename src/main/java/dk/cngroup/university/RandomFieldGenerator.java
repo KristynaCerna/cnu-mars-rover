@@ -5,7 +5,6 @@ import java.util.Random;
 public class RandomFieldGenerator {
 
     private static final int THRESHOLD = 10;
-
     private Random random = new Random();
 
     public Field getRandomField() {
@@ -14,6 +13,6 @@ public class RandomFieldGenerator {
         } else {
             return Field.ACCESSIBLE;
         }
+
     }
 }
-

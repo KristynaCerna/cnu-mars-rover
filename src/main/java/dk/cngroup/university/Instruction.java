@@ -1,12 +1,14 @@
 package dk.cngroup.university;
 
-public enum Field {
-    ACCESSIBLE("."),
-    INACCESSIBLE("0");
+public enum Instruction {
+    FORWARD("F"),
+    BACKWARD("B"),
+    TURNLEFT("L"),
+    TURNRIGHT("R");
 
     private String printChar;
 
-    Field(String printChar) {
+    Instruction(String printChar) {
         this.printChar = printChar;
     }
 
@@ -14,5 +16,4 @@ public enum Field {
     public String toString() {
         return printChar;
     }
-
 }

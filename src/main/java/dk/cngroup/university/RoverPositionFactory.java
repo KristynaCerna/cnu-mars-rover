@@ -5,13 +5,13 @@ public class RoverPositionFactory {
     public static RoverPosition getForwardPosition(RoverPosition position, Direction direction) {
         switch (direction) {
             case NORTH:
-                return new RoverPosition(position.getX() - 1, position.getY());
+                return new RoverPosition(position.getX(), position.getY() - 1);
             case SOUTH:
+                return new RoverPosition(position.getX(), position.getY() + 1);
+            case EAST:
                 return new RoverPosition(position.getX() + 1, position.getY());
             case WEST:
-                return new RoverPosition(position.getX(), position.getY() - 1);
-            case EAST:
-                return new RoverPosition(position.getX(), position.getY() + 1);
+                return new RoverPosition(position.getX() - 1, position.getY());
         }
         return position;
     }
@@ -19,13 +19,13 @@ public class RoverPositionFactory {
     public static RoverPosition getBackwardPosition(RoverPosition position, Direction direction) {
         switch (direction) {
             case NORTH:
-                return new RoverPosition(position.getX() + 1, position.getY());
-            case SOUTH:
-                return new RoverPosition(position.getX() - 1, position.getY());
-            case EAST:
-                return new RoverPosition(position.getX(), position.getY() - 1);
-            case WEST:
                 return new RoverPosition(position.getX(), position.getY() + 1);
+            case SOUTH:
+                return new RoverPosition(position.getX(), position.getY() - 1);
+            case EAST:
+                return new RoverPosition(position.getX() - 1, position.getY());
+            case WEST:
+                return new RoverPosition(position.getX() + 1, position.getY());
         }
         return position;
     }
