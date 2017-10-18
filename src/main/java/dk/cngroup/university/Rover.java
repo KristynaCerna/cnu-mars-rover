@@ -1,7 +1,5 @@
 package dk.cngroup.university;
 
-import java.util.Scanner;
-
 public class Rover {
     private Direction direction;
     private Instruction instruction;
@@ -27,10 +25,4 @@ public class Rover {
         return new Rover(direction.getRightOf());
     }
 
-    public String getInstruction() {
-        System.out.println("Insert instructions for rover: ");
-        Scanner sc = new Scanner(System.in);
-        String commandChain = sc.nextLine();
-        return commandChain;
-    }
 }

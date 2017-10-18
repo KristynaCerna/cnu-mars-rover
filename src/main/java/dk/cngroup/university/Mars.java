@@ -1,5 +1,7 @@
 package dk.cngroup.university;
 
+import java.util.Scanner;
+
 public class Mars {
     private Rover rover;
     private Landscape landscape;
@@ -32,11 +34,22 @@ public class Mars {
         }
     }
 
+    public RoverPosition dontMove(){
+        RoverPosition dontMove = RoverPositionFactory
+                .getDontMove(position);
+        return position;
+    }
+
     public RoverPosition getPosition() {
         return position;
     }
 
-
+    public String getInstruction() {
+        System.out.println("Insert instructions for rover: ");
+        Scanner sc = new Scanner(System.in);
+        String commandChain = sc.nextLine();
+        return commandChain;
+    }
 
 
     // public void printRoverPosition(){

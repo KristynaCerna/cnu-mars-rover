@@ -140,5 +140,4 @@ class MarsTest extends Specification {
         WEST        | 1 | 2
     }
 
-
 }
