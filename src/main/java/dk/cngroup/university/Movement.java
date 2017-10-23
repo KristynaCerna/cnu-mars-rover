@@ -20,21 +20,21 @@ public class Movement {
             switch (instruction) {
                 case FORWARD:
                     mars.moveForward();
-                    break;
+                    return position;
                 case BACKWARD:
                     mars.moveBackward();
-                    break;
+                    return position;
                 case TURNLEFT:
                     rover.turnLeft();
-                    break;
+                    return position;
                 case TURNRIGHT:
                     rover.turnRight();
-                    break;
+                    return position;
                 case DONTMOVE:
                     mars.dontMove();
-                    break;
+                    return position;
             }
-        ;}
+        }
         return position;
     }
 }
