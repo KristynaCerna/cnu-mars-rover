@@ -33,7 +33,11 @@ class MovementTest extends Specification {
 
         then:
 
-        newPosition == mars.getPosition()
+        x == newPosition
+                .getX()
+
+        y == newPosition
+                .getY()
 
 
         where:
@@ -66,7 +70,11 @@ class MovementTest extends Specification {
         movement.startSimulator("FFRF")
 
         then:
-        mars.getPosition()
+        x == newPosition
+                .getX()
+
+        y == newPosition
+                .getY()
 
         where:
         direction |x|y
