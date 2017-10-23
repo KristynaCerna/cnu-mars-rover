@@ -25,11 +25,11 @@ class MovementTest extends Specification {
 
         def mars = new Mars(rover, landscape, position)
 
-        def movement = new Movement(mars,rover,DONTMOVE)
+        def movement = new Movement(mars, rover, DONTMOVE, position)
 
         when:
 
-        def newPosition = movement.startRunSimulator("F")
+        def newPosition = movement.startSimulator("F")
 
         then:
 
@@ -48,7 +48,7 @@ class MovementTest extends Specification {
     @Unroll
     "should move rover to new #position with obstacle" (Direction direction,int x, int y){
 
-        def movement = new Movement(mars, rover,instruction)
+        def movement = new Movement(mars, rover, instruction, position)
 
         def rover = new Rover(EAST)
 
@@ -63,7 +63,7 @@ class MovementTest extends Specification {
 
         when:
 
-        movement.startRunSimulator("FFRF")
+        movement.startSimulator("FFRF")
 
         then:
         mars.getPosition()
