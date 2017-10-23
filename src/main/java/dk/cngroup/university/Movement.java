@@ -19,11 +19,9 @@ public class Movement {
         for (int i = 0; i < commandChain.length(); i++) {
             switch (instruction) {
                 case FORWARD:
-                    mars.moveForward();
-                    return position;
+                   return mars.moveForward();
                 case BACKWARD:
-                    mars.moveBackward();
-                    return position;
+                    return mars.moveBackward();
                 case TURNLEFT:
                     rover.turnLeft();
                     return position;
@@ -31,8 +29,7 @@ public class Movement {
                     rover.turnRight();
                     return position;
                 case DONTMOVE:
-                    mars.dontMove();
-                    return position;
+                   return mars.dontMove();
             }
         }
         return position;
