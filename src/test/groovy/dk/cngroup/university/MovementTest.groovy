@@ -48,8 +48,6 @@ class MovementTest extends Specification {
     @Unroll
     "should move rover to new #position with obstacle" (Direction direction,int x, int y){
 
-        def movement = new Movement(mars, rover, instruction, position)
-
         def rover = new Rover(EAST)
 
         RandomFieldGenerator generator = Mock(RandomFieldGenerator)
@@ -57,9 +55,11 @@ class MovementTest extends Specification {
 
         Landscape landscape = new Landscape(generator,3)
 
-        def position = new RoverPosition(0, 0)
+        def position = new RoverPosition(1, 1)
 
         def mars = new Mars(rover, landscape, position)
+
+        def movement = new Movement(mars, rover, DONTMOVE, position)
 
         when:
 
