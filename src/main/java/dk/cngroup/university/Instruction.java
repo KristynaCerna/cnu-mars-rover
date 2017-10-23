@@ -4,7 +4,8 @@ public enum Instruction {
     FORWARD("F"),
     BACKWARD("B"),
     TURNLEFT("L"),
-    TURNRIGHT("R");
+    TURNRIGHT("R"),
+    DONTMOVE("D");
 
     private String printChar;
 

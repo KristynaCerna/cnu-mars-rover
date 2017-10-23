@@ -3,24 +3,61 @@ package dk.cngroup.university
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import static dk.cngroup.university.Direction.EAST
-import static dk.cngroup.university.Direction.SOUTH
+import static dk.cngroup.university.Direction.*
+import static dk.cngroup.university.Field.ACCESSIBLE
+import static dk.cngroup.university.Field.INACCESSIBLE
+import static dk.cngroup.university.Instruction.DONTMOVE
 
 class MovementTest extends Specification {
 
     @Unroll
-    "Should move rover to new #position without obstacle"(Direction direction,int x, int y) {
+    "Should move rover to new #position without obstacle"(Direction direction, int x, int y) {
 
         given:
 
-        def movement = Mock(Movement)
+
+        def rover = Mock(Rover)
+        rover.getDirection() >>>direction
+
+        Landscape landscape = new Landscape(LandscapeTest.testLandscape)
+
+        def position = new RoverPosition(1, 1)
+
+        def mars = new Mars(rover, landscape, position)
+
+        def movement = new Movement(mars,rover,DONTMOVE)
+
+        when:
+
+        def newPosition = movement.startRunSimulator("F")
+
+        then:
+
+        newPosition == mars.getPosition()
+
+
+        where:
+        direction |x|y
+        WEST     |1|0
+        EAST     |2|1
+        SOUTH    |1|2
+        NORTH    |0|1
+
+    }
+
+    @Unroll
+    "should move rover to new #position with obstacle" (Direction direction,int x, int y){
+
+        def movement = new Movement(mars, rover,instruction)
 
         def rover = new Rover(EAST)
 
         RandomFieldGenerator generator = Mock(RandomFieldGenerator)
-        Landscape landscape = new Landscape(generator, 3)
+        generator.getRandomField() >>> [INACCESSIBLE,INACCESSIBLE,ACCESSIBLE]
 
-        def position = new RoverPosition(0, 2)
+        Landscape landscape = new Landscape(generator,3)
+
+        def position = new RoverPosition(0, 0)
 
         def mars = new Mars(rover, landscape, position)
 

@@ -29,4 +29,9 @@ public class RoverPositionFactory {
         }
         return position;
     }
+
+    public static RoverPosition getDontMove(RoverPosition position){
+        return new RoverPosition(position.getX(), position.getY());
+    }
+
 }
