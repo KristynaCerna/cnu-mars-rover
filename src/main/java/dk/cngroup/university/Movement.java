@@ -6,36 +6,32 @@ public class Movement {
     private Mars mars;
     private Rover rover;
     private Instruction instruction;
+    private RoverPosition position;
 
-    public Movement(Mars mars, Rover rover, Instruction instruction) {
+    public Movement(Mars mars, Rover rover, Instruction instruction, RoverPosition position) {
         this.mars = mars;
         this.rover = rover;
         this.instruction = DONTMOVE;
+        this.position = position;
     }
 
-    public void startRunSimulator(String commandChain) {
-        movementInstruction(commandChain);
-    }
-
-    public void movementInstruction(String commandChain) {
+    public RoverPosition startSimulator(String commandChain) {
         for (int i = 0; i < commandChain.length(); i++) {
             switch (instruction) {
                 case FORWARD:
-                    mars.moveForward();
-                    break;
+                   return mars.moveForward();
                 case BACKWARD:
-                    mars.moveBackward();
-                    break;
+                    return mars.moveBackward();
                 case TURNLEFT:
                     rover.turnLeft();
-                    break;
+                    return position;
                 case TURNRIGHT:
                     rover.turnRight();
-                    break;
+                    return position;
                 case DONTMOVE:
-                    mars.dontMove();
-                    break;
+                   return mars.dontMove();
             }
         }
+        return position;
     }
 }

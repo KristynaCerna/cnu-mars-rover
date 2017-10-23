@@ -1,4 +1,5 @@
-import dk.cngroup.university.*
+package dk.cngroup.university
+
 import spock.lang.Specification
 import spock.lang.Unroll
 

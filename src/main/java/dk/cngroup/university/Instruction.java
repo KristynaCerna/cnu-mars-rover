@@ -1,7 +1,7 @@
 package dk.cngroup.university;
 
 public enum Instruction {
-    FORWARD("F"),
+    FORWARD("B"),
     BACKWARD("B"),
     TURNLEFT("L"),
     TURNRIGHT("R"),

@@ -25,15 +25,19 @@ class MovementTest extends Specification {
 
         def mars = new Mars(rover, landscape, position)
 
-        def movement = new Movement(mars,rover,DONTMOVE)
+        def movement = new Movement(mars, rover, DONTMOVE, position)
 
         when:
 
-        def newPosition = movement.startRunSimulator("F")
+        def newPosition = movement.startSimulator("F")
 
         then:
 
-        newPosition == mars.getPosition()
+        x == newPosition
+                .getX()
+
+        y == newPosition
+                .getY()
 
 
         where:
@@ -48,8 +52,6 @@ class MovementTest extends Specification {
     @Unroll
     "should move rover to new #position with obstacle" (Direction direction,int x, int y){
 
-        def movement = new Movement(mars, rover,instruction)
-
         def rover = new Rover(EAST)
 
         RandomFieldGenerator generator = Mock(RandomFieldGenerator)
@@ -57,16 +59,22 @@ class MovementTest extends Specification {
 
         Landscape landscape = new Landscape(generator,3)
 
-        def position = new RoverPosition(0, 0)
+        def position = new RoverPosition(1, 1)
 
         def mars = new Mars(rover, landscape, position)
 
+        def movement = new Movement(mars, rover, DONTMOVE, position)
+
         when:
 
-        movement.startRunSimulator("FFRF")
+        movement.startSimulator("FFRF")
 
         then:
-        mars.getPosition()
+        x == newPosition
+                .getX()
+
+        y == newPosition
+                .getY()
 
         where:
         direction |x|y
