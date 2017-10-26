@@ -1,20 +1,12 @@
 package dk.cngroup.university;
 
 public enum Instruction {
-    FORWARD("B"),
-    BACKWARD("B"),
-    TURNLEFT("L"),
-    TURNRIGHT("R"),
-    DONTMOVE("D");
+    /*FORWARD(Command.F),
+    BACKWARD(Command.B),
+    TURNLEFT(Command.L),
+    TURNRIGHT(Command.R),
+    DONTMOVE(Command.D);
+*/
 
-    private String printChar;
 
-    Instruction(String printChar) {
-        this.printChar = printChar;
-    }
-
-    @Override
-    public String toString() {
-        return printChar;
-    }
 }

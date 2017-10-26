@@ -25,11 +25,11 @@ class MovementTest extends Specification {
 
         def mars = new Mars(rover, landscape, position)
 
-        def movement = new Movement(mars, rover, DONTMOVE, position)
+        def movement = new Movement(mars, rover, position)
 
         when:
 
-        def newPosition = movement.startSimulator("F")
+        def newPosition = movement.startSimulator("B")
 
         then:
 
@@ -42,10 +42,10 @@ class MovementTest extends Specification {
 
         where:
         direction |x|y
-        WEST     |1|0
-        EAST     |2|1
-        SOUTH    |1|2
-        NORTH    |0|1
+        WEST     |2|1
+        EAST     |0|1
+        SOUTH    |1|0
+        NORTH    |1|2
 
     }
 
