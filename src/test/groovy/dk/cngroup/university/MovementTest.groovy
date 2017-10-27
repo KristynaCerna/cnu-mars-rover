@@ -4,8 +4,6 @@ import spock.lang.Specification
 import spock.lang.Unroll
 
 import static dk.cngroup.university.Direction.*
-import static dk.cngroup.university.Field.ACCESSIBLE
-import static dk.cngroup.university.Field.INACCESSIBLE
 
 class MovementTest extends Specification {
 
@@ -24,7 +22,7 @@ class MovementTest extends Specification {
 
         def mars = new Mars(rover, landscape, position)
 
-        def movement = new Movement(mars, rover, position)
+        def movement = new Movement(mars, rover, position, null)
 
         when:
 
@@ -63,11 +61,11 @@ class MovementTest extends Specification {
 
         def mars = new Mars(rover, landscape, position)
 
-        def movement = new Movement(mars, rover, position)
+        def movement = new Movement(mars, rover, position, null)
 
         when:
 
-        def newPosition = movement.startSimulator("FF")
+        def newPosition = movement.startSimulator("F")
 
         then:
 
@@ -82,38 +80,5 @@ class MovementTest extends Specification {
         direction |x|y
         EAST     |2|1
         SOUTH    |1|2
-    }
-
-    @Unroll
-    "should move rover to new #position with obstacle" (Direction direction,int x, int y){
-
-        def rover = new Rover(EAST)
-
-        RandomFieldGenerator generator = Mock(RandomFieldGenerator)
-        generator.getRandomField() >>> [INACCESSIBLE,INACCESSIBLE,ACCESSIBLE]
-
-        Landscape landscape = new Landscape(generator,3)
-
-        def position = new RoverPosition(1, 1)
-
-        def mars = new Mars(rover, landscape, position)
-
-        def movement = new Movement(mars, rover, position)
-
-        when:
-
-        movement.startSimulator("FFRF")
-
-        then:
-        x == newPosition
-                .getX()
-
-        y == newPosition
-                .getY()
-
-        where:
-        direction |x|y
-        SOUTH     |2|3
-
     }
 }
