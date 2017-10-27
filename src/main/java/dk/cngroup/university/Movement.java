@@ -14,22 +14,31 @@ public class Movement {
     }
 
         public RoverPosition startSimulator(String commandChain) {
-        for (int i = 0; i < commandChain.length(); i++) {
-            switch (commandChain) {
-                case "F":
+        char[] commands = commandChain.toCharArray();
+            for(char command : commands)
+            switch (command) {
+                case 'F':;
+                    getPosition();
                     return mars.moveForward();
-                case "B":
+                case 'B':
+                    getPosition();
                     return mars.moveBackward();
-                case "L":
+                case 'L':
+                    getPosition();
                     rover.turnLeft();
                     return position;
-                case "R":
+                case 'R':
+                    getPosition();
                     rover.turnRight();
                     return position;
-                case "D":
+                case 'D':
+                    getPosition();
                     return mars.dontMove();
             }
+            return getPosition();
         }
+
+    public RoverPosition getPosition() {
         return position;
     }
 }
