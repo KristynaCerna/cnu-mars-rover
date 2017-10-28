@@ -31,7 +31,7 @@ public class Input {
 
     public void printLandscapeSize(){ System.out.println("Landscape size is set to " + LandscapeSize + "\n"); }
 
-    public void printInitialPosition(){
-        System.out.println("Rover is on initial position " + finalPosition  + "\n");
-    }
+    public void printInitialPosition(){ System.out.println("Rover is on initial position " + initialPosition  + "\n"); }
+
+    public void printFinalPosition() {System.out.println("Rover reached final position " + finalPosition + "\n");}
 }
