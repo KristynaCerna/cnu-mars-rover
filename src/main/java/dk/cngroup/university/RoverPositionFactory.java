@@ -34,4 +34,8 @@ public class RoverPositionFactory {
         return new RoverPosition(position.getX(), position.getY());
     }
 
+
+    public static RoverPosition getPosition(RoverPosition initialPosition) {
+        return position;
+    }
 }

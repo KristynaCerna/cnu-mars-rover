@@ -38,10 +38,6 @@ public class Mars {
         return position;
     }
 
-    public RoverPosition getPosition() {
-        return position;
-    }
-
     public RoverPosition getDontMovePosition(){
         return RoverPositionFactory.getDontMove(position,rover.getDirection());
     }
