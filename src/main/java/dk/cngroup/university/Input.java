@@ -6,49 +6,32 @@ public class Input {
     private String commandChain;
     private RoverPosition initialPosition;
     private RoverPosition finalPosition;
-    private int LanscapeSize;
-    public String coordinates; 
+    private int LandscapeSize;
 
 
-    public Input(String commandChain, RoverPosition initialPosition, RoverPosition finalPosition, int lanscapeSize, String coordinates) {
+
+    public Input(String commandChain, RoverPosition initialPosition, RoverPosition finalPosition, int landscapeSize) {
         this.commandChain = commandChain;
         this.initialPosition = initialPosition;
         this.finalPosition = finalPosition;
-        LanscapeSize = lanscapeSize;
-        this.coordinates = coordinates;
+        LandscapeSize = landscapeSize;
     }
 
     public String getInstruction() {
         System.out.println("Insert instructions for rover: ");
         Scanner sc = new Scanner(System.in);
-        String commandChain = sc.nextLine();
+        commandChain = sc.nextLine();
         return this.commandChain;
     }
-    public String getInitialPosition(){
-        System.out.println("Please enter the initial rover position: ");
-        Scanner sc = new Scanner(System.in);
-        String coordinates = sc.nextLine();
-        return this.coordinates;
+
+    //refactor to one input into one print method
+    public void printCommands(){
+        System.out.println("Command input is " + commandChain  + "\n");
     }
 
-    public RoverPosition convertPosition(RoverPosition initialPosition) {
-        String coordinate = this.coordinates;
-        String[] parts = coordinate.split(",");
-        String xString = parts[0].trim().substring(1).trim();
-        String yString = parts[1].trim().substring(0, parts[1].trim().length() - 1).trim();
-        int x = Integer.parseInt(xString);
-        int y = Integer.parseInt(yString);
-        new RoverPosition(initialPosition.setX(x),initialPosition.setY(y));
-        return this.initialPosition;
+    public void printLandscapeSize(){ System.out.println("Landscape size is set to " + LandscapeSize + "\n"); }
+
+    public void printInitialPosition(){
+        System.out.println("Rover is on initial position " + finalPosition  + "\n");
     }
-
-    public int getLanscapeSize(){
-        System.out.println("Enter the size of your simulation landfield: ");
-        Scanner sc = new Scanner(System.in);
-        String size = sc.nextLine();
-        int landscapeSize = Integer.parseInt(size);
-        return landscapeSize;
-    }
-
-
 }

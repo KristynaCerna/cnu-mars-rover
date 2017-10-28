@@ -16,4 +16,14 @@ public class RoverPosition {
     public int getY() {
         return y;
     }
+
+    public int setX(int x) {
+        this.x = x;
+        return x;
+    }
+
+    public int setY(int y) {
+        this.y = y;
+        return y;
+    }
 }
