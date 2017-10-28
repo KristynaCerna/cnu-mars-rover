@@ -30,8 +30,12 @@ public class RoverPositionFactory {
         return position;
     }
 
-    public static RoverPosition getDontMove(RoverPosition position){
+    public static RoverPosition getDontMove(RoverPosition position, Direction direction){
         return new RoverPosition(position.getX(), position.getY());
     }
 
+
+    public static RoverPosition getPosition(RoverPosition initialPosition) {
+        return position;
+    }
 }

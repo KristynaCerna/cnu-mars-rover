@@ -5,7 +5,6 @@ public class Landscape {
     private Field[][] landscape;
     private RandomFieldGenerator generator;
 
-
     public Landscape(Field[][] landscape) {
         this.landscape = landscape;
     }
