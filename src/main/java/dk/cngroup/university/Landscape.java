@@ -1,5 +1,10 @@
 package dk.cngroup.university;
 
+import java.util.ArrayList;
+
+import static dk.cngroup.university.Field.ACCESSIBLE;
+import static dk.cngroup.university.Field.INACCESSIBLE;
+
 public class Landscape {
 
     private Field[][] landscape;
@@ -15,6 +20,10 @@ public class Landscape {
         this.landscape = createLandscape(squareSize);
     }
 
+    public Landscape(String matrix, int landscapeSize) {
+        this.landscape = createLandscapeFromUserInput(matrix,landscapeSize);
+    }
+
     public Field[][] getLandscape() {
         return landscape;
     }
@@ -28,6 +37,35 @@ public class Landscape {
             }
         }
         return landscape;
+    }
+
+    public Field [][] createLandscapeFromUserInput(String landscapeMatrix, int squareSize){
+
+        ArrayList<Field> fieldList = getLandscapefromMatrixList(landscapeMatrix, squareSize);
+
+        Field[][] landscape = new Field[squareSize][squareSize];
+
+        for (int i = 0; i < squareSize; i++) {
+            for (int j = 0; j < squareSize; j++){
+                landscape [i][j] = fieldList.get(0);
+          }
+        }
+        return landscape;
+    }
+
+    private ArrayList<Field> getLandscapefromMatrixList(String landscapeMatrix, int squareSize){
+
+        ArrayList<Field> fieldInput = new ArrayList<>();
+
+        String [] value = landscapeMatrix.split(" ");
+        for (String inputKey : value){
+            if (inputKey == ".") {
+                fieldInput.add(ACCESSIBLE);
+            }else{
+                fieldInput.add(INACCESSIBLE);
+            }
+        }
+        return fieldInput;
     }
 
     @Override
@@ -55,7 +93,7 @@ public class Landscape {
             return false;
         }
         Field field = landscape[pos.getX()][pos.getY()];
-        return field == Field.ACCESSIBLE;
+        return field == ACCESSIBLE;
     }
 
 }

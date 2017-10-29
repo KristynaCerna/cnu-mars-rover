@@ -1,5 +1,7 @@
 package dk.cngroup.university;
 
+import static dk.cngroup.university.SimulatorMovement.position;
+
 public class RoverPositionFactory {
 
     public static RoverPosition getForwardPosition(RoverPosition position, Direction direction) {
@@ -35,7 +37,5 @@ public class RoverPositionFactory {
     }
 
 
-    public static RoverPosition getPosition(RoverPosition initialPosition) {
-        return position;
-    }
+   public static RoverPosition getPosition(RoverPosition initialPosition) {return position; }
 }

@@ -42,6 +42,10 @@ public class Mars {
         return RoverPositionFactory.getDontMove(position,rover.getDirection());
     }
 
+    public RoverPosition getPosition() {
+        return position;
+    }
+
     public Rover getRover() { return rover; }
 
     public void setRover(Rover rover) { this.rover = rover; }

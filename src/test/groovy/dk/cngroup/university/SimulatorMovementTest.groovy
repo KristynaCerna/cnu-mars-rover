@@ -81,4 +81,6 @@ class SimulatorMovementTest extends Specification {
         EAST     |2|1
         SOUTH    |1|2
     }
+
+
 }

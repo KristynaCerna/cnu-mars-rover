@@ -4,24 +4,23 @@ public class SimulatorMovement {
     private static Mars mars;
     private static Rover rover;
     private static Landscape landscape;
-    private static RoverPosition position;
+    public static RoverPosition position;
     private static RoverPosition initialPosition, finalPosition;
     private static Input input;
+
+    public boolean runRoverSimulator(){
+        obtainInputData();
+        return finalPosition.equals(mars.getPosition());
+    }
 
     public void obtainInputData(){
 
         input.recordInput();
 
-
-
         rover = new Rover(Direction.NORTH);
-
-        Field [][] field = new Field[input.getLandscapeSize()][input.getLandscapeSize()];
-        input.getMatrix();
-        for (int i = 0, i < input.getLandscapeSize(), i++)
-            input.getMatrix() += [input.getLandscapeSize() + i];
-
+        Landscape landscape = new Landscape(input.getMatrix(),input.getLandscapeSize());
         position = RoverPositionFactory.getPosition(input.getInitialPosition());
+
         mars = new Mars(rover, landscape, initialPosition);
 
         RoverPosition initialPosition = RoverPositionFactory.getPosition(input.getInitialPosition());

@@ -1,12 +1,17 @@
 package dk.cngroup.university;
 
 public enum Instruction {
-    /*FORWARD(Command.F),
-    BACKWARD(Command.B),
-    TURNLEFT(Command.L),
-    TURNRIGHT(Command.R),
-    DONTMOVE(Command.D);
-*/
+    FORWARD("F"),
+    BACKWARD("B"),
+    TURNLEFT("L"),
+    TURNRIGHT("R"),
+    DONTMOVE("D");
 
+private final String value;
 
+Instruction (String value){
+    this.value = value;
+}
+
+public final char command() {return this.value.charAt(0);}
 }
