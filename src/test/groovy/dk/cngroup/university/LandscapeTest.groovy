@@ -20,7 +20,7 @@ class LandscapeTest extends Specification{
             RandomFieldGenerator generator = Mock(RandomFieldGenerator)
             9 * generator.getRandomField() >> ACCESSIBLE
 
-            Landscape landscape = new Landscape(generator, 3, userGenerator)
+            Landscape landscape = new Landscape(generator, 3)
 
         expect:
             landscape.getLandscape()== testLandscape
@@ -31,7 +31,7 @@ class LandscapeTest extends Specification{
         RandomFieldGenerator generator = Mock(RandomFieldGenerator)
         generator.getRandomField() >>> [INACCESSIBLE,INACCESSIBLE,ACCESSIBLE]
 
-        Landscape landscape = new Landscape(generator, 3, userGenerator)
+        Landscape landscape = new Landscape(generator, 3)
 
         when:
         String result = landscape.toString()
@@ -43,6 +43,7 @@ class LandscapeTest extends Specification{
                   """
     }
 
+
     @Unroll
     "shold return #isAccessible for #position" (boolean isAccessible, int x, int y) {
         given:
@@ -50,7 +51,7 @@ class LandscapeTest extends Specification{
         generator.getRandomField() >>>
                 [INACCESSIBLE,INACCESSIBLE, ACCESSIBLE]
 
-        Landscape landscape = new Landscape(generator, 3, userGenerator)
+        Landscape landscape = new Landscape(generator, 3)
 
         def position = new RoverPosition(x,y)
 

@@ -1,5 +1,7 @@
 package dk.cngroup.university;
 
+import static dk.cngroup.university.Direction.NORTH;
+
 public class SimulatorMovement {
     private static Mars mars;
     private static Rover rover;
@@ -15,9 +17,7 @@ public class SimulatorMovement {
 
     public void obtainInputData(){
 
-        input.recordInput();
-
-        rover = new Rover(Direction.NORTH);
+        rover = new Rover(NORTH);
         Landscape landscape = new Landscape(input.getMatrix(),input.getLandscapeSize());
         position = RoverPositionFactory.getPosition(input.getInitialPosition());
 
