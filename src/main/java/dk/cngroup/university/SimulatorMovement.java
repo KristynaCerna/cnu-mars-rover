@@ -1,33 +1,54 @@
 package dk.cngroup.university;
 
-import static dk.cngroup.university.Direction.NORTH;
-
 public class SimulatorMovement {
-    private static Mars mars;
-    private static Rover rover;
-    private static Landscape landscape;
-    public static RoverPosition position;
-    private static RoverPosition initialPosition, finalPosition;
-    private static Input input;
+    private Mars mars;
+    private Rover rover;
+    private Landscape landscape;
+    public RoverPosition position;
+    private RoverPosition initialPosition, finalPosition;
+    private String inputFromText;
+    private String commandChain;
 
-    public boolean runRoverSimulator(){
-        obtainInputData();
-        return finalPosition.equals(mars.getPosition());
+
+    public SimulatorMovement(Mars mars, Rover rover, Landscape landscape, RoverPosition position,
+                             RoverPosition initialPosition, RoverPosition finalPosition, String commandChain) {
+        this.mars = mars;
+        this.rover = rover;
+        this.landscape = landscape;
+        this.position = position;
+        this.initialPosition = initialPosition;
+        this.finalPosition = finalPosition;
+        this.commandChain = commandChain;
     }
 
-    public void obtainInputData(){
+    public boolean reachedFinalPosition(){
+        moveRover(commandChain);
+        return finalPosition.equals(mars.getPosition());
 
-        rover = new Rover(NORTH);
-        Landscape landscape = new Landscape(input.getMatrix(),input.getLandscapeSize());
-        position = RoverPositionFactory.getPosition(input.getInitialPosition());
+    }
 
-        mars = new Mars(rover, landscape, initialPosition);
+    public SimulatorMovement(String inputFromText){
+        obtainInputData();
+    }
 
-        RoverPosition initialPosition = RoverPositionFactory.getPosition(input.getInitialPosition());
-        RoverPosition finalPosition = RoverPositionFactory.getPosition(input.getFinalPosition());
+        public void obtainInputData(){
 
-        moveRover(input.getCommandChain());
-       // iftrue printProtocol
+            String[] lines = inputFromText.split("\\r?\\n");
+
+            initialPosition = ConvertInput.getInitialPositionFromInput(lines[0]);
+
+            Direction direction = ConvertInput.getDirectionFromInput(lines[2]);
+            rover = new Rover(direction);
+
+            int landscapeSize = Integer.parseInt(lines[4]);
+            String matrix = lines[6].replaceAll("\n", "");
+            landscape.createLandscapeFromUserInput(matrix,landscapeSize);
+
+            mars = new Mars(rover,landscape, initialPosition);
+
+            finalPosition = ConvertInput.getFinalPositionFromInput(lines[8]);
+
+            commandChain = lines [10];
         }
 
         public RoverPosition moveRover(String commandChain) {
@@ -58,6 +79,4 @@ public class SimulatorMovement {
     public RoverPosition getPosition() {
         return this.position;
     }
-
-
 }

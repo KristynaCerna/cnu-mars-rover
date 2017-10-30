@@ -52,11 +52,9 @@ public class Mars {
 
     public Landscape getLandscape() { return landscape; }
 
-
-
-    // public void printRoverPosition(){
-    //   System.out.println(this.position + ".");
-    //}
+    public void printRoverPosition(){
+    System.out.println("Rover position is " + this.position + ".");
+    }
 
 
 }

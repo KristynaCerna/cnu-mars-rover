@@ -39,35 +39,6 @@ public class Landscape {
         return landscape;
     }
 
-    public Field [][] createLandscapeFromUserInput(String landscapeMatrix, int squareSize){
-
-        ArrayList<Field> fieldList = getLandscapefromMatrixList(landscapeMatrix, squareSize);
-
-        Field[][] landscape = new Field[squareSize][squareSize];
-
-        for (int i = 0; i < squareSize; i++) {
-            for (int j = 0; j < squareSize; j++){
-                landscape [i][j] = fieldList.get(0);
-          }
-        }
-        return landscape;
-    }
-
-    private ArrayList<Field> getLandscapefromMatrixList(String landscapeMatrix, int squareSize){
-
-        ArrayList<Field> fieldInput = new ArrayList<>();
-
-        String [] value = landscapeMatrix.split(" ");
-        for (String inputKey : value){
-            if (inputKey == ".") {
-                fieldInput.add(ACCESSIBLE);
-            }else{
-                fieldInput.add(INACCESSIBLE);
-            }
-        }
-        return fieldInput;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -96,4 +67,32 @@ public class Landscape {
         return field == ACCESSIBLE;
     }
 
+    public Field [][] createLandscapeFromUserInput(String landscapeMatrix, int squareSize){
+
+        ArrayList<Field> fieldList = getLandscapefromMatrixList(landscapeMatrix, squareSize);
+
+        Field[][] landscape = new Field[squareSize][squareSize];
+
+        for (int i = 0; i < squareSize; i++) {
+            for (int j = 0; j < squareSize; j++){
+                landscape [i][j] = fieldList.get(0);
+            }
+        }
+        return landscape;
+    }
+
+    private ArrayList<Field> getLandscapefromMatrixList(String landscapeMatrix, int squareSize){
+
+        ArrayList<Field> fieldInput = new ArrayList<>();
+
+        String [] value = landscapeMatrix.split(" ");
+        for (String inputKey : value){
+            if (inputKey == ".") {
+                fieldInput.add(ACCESSIBLE);
+            }else{
+                fieldInput.add(INACCESSIBLE);
+            }
+        }
+        return fieldInput;
+    }
 }

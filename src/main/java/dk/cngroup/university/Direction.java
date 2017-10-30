@@ -6,6 +6,7 @@ public enum Direction {
     SOUTH(WorldSide.WEST, WorldSide.EAST),
     WEST(WorldSide.NORTH, WorldSide.SOUTH);
 
+
     private WorldSide rightOf;
     private WorldSide leftOf;
 

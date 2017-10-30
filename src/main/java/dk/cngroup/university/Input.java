@@ -1,34 +1,40 @@
 package dk.cngroup.university;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Input {
 
     private String commandChain;
     private String initialPosition;
     private String finalPosition;
-    private static int LandscapeSize;
+    private int LandscapeSize;
     private String matrix;
     private String initialDirection;
 
     public Input(String inputFromText){
-        String[] lines = inputFromText.split("\\r?\\n");
 
-        initialPosition = lines[0];
-        finalPosition = lines[1];
-        LandscapeSize = Integer.parseInt(lines[3]);
-        matrix = lines[4].replaceAll("\n", "");
-        initialDirection = lines[5];
-        commandChain = lines[6];
+        Pattern pattern = Pattern.compile("(\\d,\\d)\\n\\n(.)\\n\\n(\\p{Upper})\\n\\n([\\n\\d.]*)?\\n\\n(\\d\\d)\\n\\n(\\p{Upper})");
+        Matcher matcher = pattern.matcher(inputFromText);
+        matcher.find();
 
-
+        initialPosition = matcher.group(1);
+        initialDirection = matcher.group(2);
+        LandscapeSize = Integer.parseInt(matcher.group(3));
+        matrix = matcher.group(4);
+        finalPosition = matcher.group(5);
+        commandChain = matcher.group(6);
     }
+
+
+
+    public String getInitialPosition() { return initialPosition; }
 
     public String getCommandChain() { return commandChain; }
 
-    public RoverPosition getInitialPosition() { return initialPosition; }
+    public String getFinalPosition() { return finalPosition; }
 
-    public RoverPosition getFinalPosition() { return finalPosition; }
-
-    public static int getLandscapeSize() { return LandscapeSize; }
+    public int getLandscapeSize() { return LandscapeSize; }
 
     public String getMatrix() { return matrix; }
 
