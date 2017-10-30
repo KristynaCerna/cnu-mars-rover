@@ -42,6 +42,14 @@ public class Mars {
         return RoverPositionFactory.getDontMove(position,rover.getDirection());
     }
 
+    public RoverPosition getForwardPosition(){
+        return RoverPositionFactory.getForwardPosition(position,rover.getDirection());
+    }
+
+    public RoverPosition getBackwardPosition(){
+        return  RoverPositionFactory.getBackwardPosition(position, rover.getDirection());
+    }
+
     public RoverPosition getPosition() {
         return position;
     }
@@ -55,6 +63,4 @@ public class Mars {
     public void printRoverPosition(){
     System.out.println("Rover position is " + this.position + ".");
     }
-
-
 }

@@ -10,6 +10,8 @@ public enum Field {
         this.printChar = printChar;
     }
 
+
+
     @Override
     public String toString() {
         return printChar;

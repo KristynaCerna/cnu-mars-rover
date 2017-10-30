@@ -33,7 +33,7 @@ public class SimulatorMovement {
 
         public void obtainInputData(){
 
-            String[] lines = inputFromText.split("\\r?\\n");
+            String[] lines = inputFromText.split("\n");
 
             initialPosition = ConvertInput.getInitialPositionFromInput(lines[0]);
 
