@@ -38,43 +38,39 @@ public class movementSimulator {
             Direction direction = ConvertInput.getDirectionFromInput(lines[2]);
             rover = new Rover(direction);
 
-            int landscapeSize = Integer.parseInt(lines[4]);
+            int landscapeSize = Integer.parseInt(lines[3]);
             Field[][] field = new Field[landscapeSize][landscapeSize];
             String matrix = "";
             for (int i = 0; i > landscapeSize; i++)
-                 matrix += lines[6 + i] + "\n";
+                 matrix += lines[4 + i] + "\n";
             landscape = ConvertInput.getLandscapeFromUserInput(matrix,landscapeSize,field);
 
             mars = new Mars(rover,landscape, initialPosition);
 
-            finalPosition = ConvertInput.getFinalPositionFromInput(lines[8 + landscapeSize]);
+            finalPosition = ConvertInput.getFinalPositionFromInput(lines[5 + landscapeSize]);
 
-            commandChain = lines [10 + landscapeSize];
+            commandChain = lines [6 + landscapeSize];
         }
 
         public RoverPosition moveRover(String commandChain) {
             char[] commands = commandChain.toCharArray();
-            for(char command : commands)
-            switch (command) {
-                case 'F':
-                    getPosition();
-                    return mars.moveForward();
-                case 'B':
-                    getPosition();
-                    return mars.moveBackward();
-                case 'L':
-                    getPosition();
-                    rover.turnLeft();
-                    return position;
-                case 'R':
-                    getPosition();
-                    rover.turnRight();
-                    return position;
-                case 'D':
-                    getPosition();
-                    return mars.dontMove();
+            for (char command : commands) {
+                switch (command) {
+                    case 'F':
+                        return mars.moveForward();
+                    case 'B':
+                        return mars.moveBackward();
+                    case 'L':
+                        rover.turnLeft();
+                        return position;
+                    case 'R':
+                        rover.turnRight();
+                        return position;
+                    case 'D':
+                        return mars.dontMove();
+                }
             }
-            return getPosition();
+            return position;
         }
 
     public Mars getMars() { return mars; }
