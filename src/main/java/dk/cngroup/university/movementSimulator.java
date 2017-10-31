@@ -24,6 +24,7 @@ public class movementSimulator {
     }
 
     public movementSimulator(String inputFromText){
+        this.inputFromText = inputFromText;
         obtainInputData();
     }
 
@@ -38,14 +39,16 @@ public class movementSimulator {
 
             int landscapeSize = Integer.parseInt(lines[4]);
             Field[][] field = new Field[landscapeSize][landscapeSize];
-            String matrix =lines[6].replaceAll("\n", "");
-            ConvertInput.getLandscapeFromUserInput(matrix,landscapeSize,field);
+            String matrix = "";
+            for (int i = 0; i > landscapeSize; i++)
+                 matrix += lines[6 + i] + "\n";
+            landscape = ConvertInput.getLandscapeFromUserInput(matrix,landscapeSize,field);
 
             mars = new Mars(rover,landscape, initialPosition);
 
-            finalPosition = ConvertInput.getFinalPositionFromInput(lines[8]);
+            finalPosition = ConvertInput.getFinalPositionFromInput(lines[8 + landscapeSize]);
 
-            commandChain = lines [10];
+            commandChain = lines [10 + landscapeSize];
         }
 
         public RoverPosition moveRover(String commandChain) {

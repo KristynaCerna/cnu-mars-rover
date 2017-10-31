@@ -5,7 +5,6 @@ import static dk.cngroup.university.Field.ACCESSIBLE;
 public class Landscape {
 
     private Field[][] landscape;
-    private Field[][] fieldFromInput;
     private RandomFieldGenerator generator;
 
     public Landscape(Field[][] landscape) {

@@ -16,24 +16,25 @@ public class ConvertInput {
     }
 
     public static Direction getDirectionFromInput(String initialDirection){
-        return DirectionFactory.getDirectionFromString(initialDirection);
+        return Direction.getDirectionFromString(initialDirection);
     }
 
-     public static Field [][] getFieldFromUserInput(int squareSize) {
-        Field[][] fieldFromInput = new
-                Field[squareSize][squareSize];
+     public static Field [][] getFieldFromUserInput(String squareSize) {
+        int landscapeSize = Integer.parseInt(squareSize);
+        Field[][] fieldFromInput = new Field[landscapeSize][landscapeSize];
         return fieldFromInput;
     }
 
-    public static Landscape getLandscapeFromUserInput(String matrix,int squareSize, Field[][] fieldFromInput){
-        String[] lines = matrix.split(" ");
-        for (int i = 0; i < squareSize; i++) {
-            String lineOfField = lines[i];
-            for (int j = 0; j < squareSize; j++){
-                fieldFromInput [i][j] = Field.getFieldFromInput(lineOfField.charAt(j));
+    public static Landscape getLandscapeFromUserInput(String matrix,int landscapeSize, Field[][] fieldFromInput){
+        String[] lines = matrix.split("\n");
+        for (int i = 0; i < landscapeSize; i++) {
+            String line = lines[i];
+            for (int j = 0; j < landscapeSize; j++){
+                fieldFromInput [i][j] = Field.getFieldFromInput(line.charAt(j));
             }
         }
         return new Landscape(fieldFromInput);
     }
 }
+
 
