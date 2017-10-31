@@ -4,6 +4,7 @@ public class ConvertInput {
 
     public static RoverPosition getInitialPositionFromInput(String initialPosition){
         String[] parts = initialPosition.split(",");
+
         return new RoverPosition(Integer.parseInt(parts[0]),Integer.parseInt(parts[1]));
     }
 

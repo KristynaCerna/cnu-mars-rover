@@ -67,4 +67,25 @@ class LandscapeTest extends Specification{
         false |3|3
         false |-1|6
     }
+
+    @Unroll
+    "should return landscape with size from data"(){
+
+        given:
+
+        def input = ".0....0.."
+
+        def squareSize = 3
+
+        def Field = new Field[squareSize][squareSize]
+
+        def landscapeTest = new  Landscape(input, squareSize)
+
+        when:
+
+        def landscape = Landscape.createLandscapeFromUserInput(input,squareSize)
+
+        then:
+        landscape.toString().equals(landscapeTest.toString())
+    }
 }

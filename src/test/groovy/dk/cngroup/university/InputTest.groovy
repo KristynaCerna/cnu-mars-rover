@@ -22,6 +22,19 @@ class InputTest extends Specification{
 
     }
 
+    @Unroll
+    "should get final Position from input"(){
+        given:
+        def input = "4,0"
+
+        when:
+        def position = ConvertInput.getInitialPositionFromInput(input)
+
+        then:
+        position.getX() == 4
+        position.getY() == 0
+    }
+
         @Unroll
         "should get #direction from input"(String input, Direction direction) {
 

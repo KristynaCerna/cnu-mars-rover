@@ -1,6 +1,6 @@
 package dk.cngroup.university;
 
-public class SimulatorMovement {
+public class movementSimulator {
     private Mars mars;
     private Rover rover;
     private Landscape landscape;
@@ -10,15 +10,11 @@ public class SimulatorMovement {
     private String commandChain;
 
 
-    public SimulatorMovement(Mars mars, Rover rover, Landscape landscape, RoverPosition position,
-                             RoverPosition initialPosition, RoverPosition finalPosition, String commandChain) {
+    public movementSimulator(Mars mars, Rover rover, Landscape landscape, RoverPosition position) {
         this.mars = mars;
         this.rover = rover;
         this.landscape = landscape;
         this.position = position;
-        this.initialPosition = initialPosition;
-        this.finalPosition = finalPosition;
-        this.commandChain = commandChain;
     }
 
     public boolean reachedFinalPosition(){
@@ -27,7 +23,7 @@ public class SimulatorMovement {
 
     }
 
-    public SimulatorMovement(String inputFromText){
+    public movementSimulator(String inputFromText){
         obtainInputData();
     }
 

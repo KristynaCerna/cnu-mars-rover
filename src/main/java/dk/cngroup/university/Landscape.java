@@ -1,13 +1,11 @@
 package dk.cngroup.university;
 
-import java.util.ArrayList;
-
 import static dk.cngroup.university.Field.ACCESSIBLE;
-import static dk.cngroup.university.Field.INACCESSIBLE;
 
 public class Landscape {
 
     private Field[][] landscape;
+    private Field[][] fieldFromInput;
     private RandomFieldGenerator generator;
 
     public Landscape(Field[][] landscape) {
@@ -20,8 +18,8 @@ public class Landscape {
         this.landscape = createLandscape(squareSize);
     }
 
-    public Landscape(String matrix, int landscapeSize) {
-        this.landscape = createLandscapeFromUserInput(matrix,landscapeSize);
+    public Landscape(String matrix, int landscapeSize, Field[][] fieldFromInput) {
+        this.landscape = getLandscapeFromUserInput(matrix,landscapeSize, fieldFromInput);
     }
 
     public Field[][] getLandscape() {
@@ -37,6 +35,23 @@ public class Landscape {
             }
         }
         return landscape;
+    }
+
+    public Field [][] getFieldFromUserInput(int squareSize) {
+        fieldFromInput = new
+                Field[squareSize][squareSize];
+        return fieldFromInput;
+    }
+
+    public static Landscape getLandscapeFromUserInput(String matrix,int squareSize, Field[][] fieldFromInput){
+        String[] lines = matrix.split(" ");
+        for (int i = 0; i < squareSize; i++) {
+            String lineOfField = lines[i];
+            for (int j = 0; j < squareSize; j++){
+                fieldFromInput [i][j] = Field.getFieldFromInput(lineOfField.charAt(j));
+            }
+        }
+        return new Landscape(fieldFromInput);
     }
 
     @Override
@@ -67,32 +82,4 @@ public class Landscape {
         return field == ACCESSIBLE;
     }
 
-    public Field [][] createLandscapeFromUserInput(String landscapeMatrix, int squareSize){
-
-        ArrayList<Field> fieldList = getLandscapefromMatrixList(landscapeMatrix, squareSize);
-
-        Field[][] landscape = new Field[squareSize][squareSize];
-
-        for (int i = 0; i < squareSize; i++) {
-            for (int j = 0; j < squareSize; j++){
-                landscape [i][j] = fieldList.get(0);
-            }
-        }
-        return landscape;
-    }
-
-    private ArrayList<Field> getLandscapefromMatrixList(String landscapeMatrix, int squareSize){
-
-        ArrayList<Field> fieldInput = new ArrayList<>();
-
-        String [] value = landscapeMatrix.split(" ");
-        for (String inputKey : value){
-            if (inputKey == ".") {
-                fieldInput.add(ACCESSIBLE);
-            }else{
-                fieldInput.add(INACCESSIBLE);
-            }
-        }
-        return fieldInput;
-    }
 }

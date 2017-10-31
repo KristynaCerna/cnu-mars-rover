@@ -5,7 +5,7 @@ import spock.lang.Unroll
 
 import static dk.cngroup.university.Direction.*
 
-class SimulatorMovementTest extends Specification {
+class movementSimulatorTest extends Specification {
 
     @Unroll
     "Should move rover to new #position without obstacle"(Direction direction, int x, int y) {
@@ -22,8 +22,7 @@ class SimulatorMovementTest extends Specification {
 
         def mars = new Mars(rover, landscape, position)
 
-        def movement = new SimulatorMovement(mars, rover, position, initialPosition, null)
-
+        def movement = new movementSimulator(mars, rover, landscape,position)
         when:
 
         def newPosition = movement.moveRover("B")
@@ -61,7 +60,7 @@ class SimulatorMovementTest extends Specification {
 
         def mars = new Mars(rover, landscape, position)
 
-        def movement = new SimulatorMovement(mars, rover, position, initialPosition, null)
+        def movement = new movementSimulator(mars, rover, landscape,position)
 
         when:
 
