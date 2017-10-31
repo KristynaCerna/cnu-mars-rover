@@ -11,8 +11,8 @@ public enum Field {
     }
 
     @Override
-    public String toString() {
-        return printChar;
-    }
+    public String toString() { return printChar; }
+
+
 
 }

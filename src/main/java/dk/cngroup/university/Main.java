@@ -3,14 +3,30 @@ package dk.cngroup.university;
 public class Main {
 
 
-    public static void main(String[] args) {
+   public static void main(String[] args) {
 
-        Input input = new Input(null,null,null, 10, null);
-        {
-           input.getLandscapeMatrixFromUser();
-           input.printmatrixChar();
+       String inputFromText = "1,0\n" +
+               "\n"    +
+               "N\n"  +
+               "\n"    +
+               "5\n"   +
+               "\n"    +
+               "..0..\n" +
+               ".....\n" +
+               ".0..0\n" +
+               ".0...\n" +
+               ".....\n" +
+               "\n"    +
+               "4,0\n" +
+               "\n"    +
+               "RRFLFRFF";
 
-        }
+       movementSimulator simulator = new movementSimulator(inputFromText);
+       boolean result = simulator.reachedFinalPosition();
+       System.out.print("Simulation of mars rover reached final position - " + result);
+
+
+
     }
 
 }

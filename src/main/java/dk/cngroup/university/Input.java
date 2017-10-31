@@ -1,119 +1,44 @@
 package dk.cngroup.university;
 
-import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Input {
+
     private String commandChain;
-    private RoverPosition initialPosition;
-    private RoverPosition finalPosition;
-    private static int LandscapeSize;
+    private String initialPosition;
+    private String finalPosition;
+    private int LandscapeSize;
     private String matrix;
     private String initialDirection;
 
+    public Input(String inputFromText){
 
+        Pattern pattern = Pattern.compile("(\\d,\\d)\\n\\n(.)\\n\\n(\\p{Upper})\\n\\n([\\n\\d.]*)?\\n\\n(\\d\\d)\\n\\n(\\p{Upper})");
+        Matcher matcher = pattern.matcher(inputFromText);
+        matcher.find();
 
-    public Input(String commandChain, RoverPosition initialPosition, RoverPosition finalPosition,
-                 int landscapeSize, String  matrix, String initialDirection) {
-        this.commandChain = commandChain;
-        this.initialPosition = initialPosition;
-        this.finalPosition = finalPosition;
-        LandscapeSize = landscapeSize;
-        this.matrix = matrix;
-        this.initialDirection = initialDirection;
+        initialPosition = matcher.group(1);
+        initialDirection = matcher.group(2);
+        LandscapeSize = Integer.parseInt(matcher.group(3));
+        matrix = matcher.group(4);
+        finalPosition = matcher.group(5);
+        commandChain = matcher.group(6);
     }
 
-    public void recordInput(){
-        landscapeMatrixFromUser();
-        lanscapeSizeFromUser();
-        initialPositionFromUser();
-        finalPositionFromUser();
-        commandChainFromUser();
-        directionFromUser();
-    }
 
-    public String commandChainFromUser() {
-        System.out.println("Insert instructions for rover: ");
-        Scanner sc = new Scanner(System.in);
-        commandChain = sc.nextLine();
-        return this.commandChain;
-    }
 
-    public RoverPosition initialPositionFromUser(){
-        System.out.println("Please enter the initial rover position: ");
-        Scanner sc = new Scanner(System.in);
-        String instruction = sc.nextLine();
-        String[] parts = instruction.split(",");
-        String x = parts[0].trim().substring(1).trim();
-        String y = parts[1].trim().substring(0,parts[1].trim().length()-1).trim();
-        return new RoverPosition(Integer.parseInt(parts[0]),Integer.parseInt(parts[1]));
-    }
+    public String getInitialPosition() { return initialPosition; }
 
-    public RoverPosition finalPositionFromUser(){
-        System.out.println("Please enter the final rover position: ");
-        Scanner sc = new Scanner(System.in);
-        String instruction = sc.nextLine();
-        String[] parts = instruction.split(",");
-        String x = parts[0].trim().substring(1).trim();
-        String y = parts[1].trim().substring(0,parts[1].trim().length()-1).trim();
-        return new RoverPosition(Integer.parseInt(parts[0]),Integer.parseInt(parts[1]));
-    }
+    public String getCommandChain() { return commandChain; }
 
-    public int lanscapeSizeFromUser(){
-        System.out.println("Enter the size of your simulation landfield: ");
-        Scanner sc = new Scanner(System.in);
-        String size = sc.nextLine();
-        int landscapeSize = Integer.parseInt(size);
-        return landscapeSize;
-    }
+    public String getFinalPosition() { return finalPosition; }
 
-    public String landscapeMatrixFromUser(){
-        System.out.println("Enter of matrix of test landscape: ");
-        Scanner sc = new Scanner(System.in);
-        matrix = sc.nextLine();
-        return matrix;
-    }
+    public int getLandscapeSize() { return LandscapeSize; }
 
-    public String directionFromUser(){
-        System.out.println("Enter of matrix of test landscape: ");
-        Scanner sc = new Scanner(System.in);
-        initialDirection = sc.nextLine();
-        return initialDirection;
-    }
+    public String getMatrix() { return matrix; }
 
-    public String getCommandChain() {
-        return commandChain;
-    }
-
-    public RoverPosition getInitialPosition() {
-        return initialPosition;
-    }
-
-    public RoverPosition getFinalPosition() {
-        return finalPosition;
-    }
-
-    public int getLandscapeSize() {
-        return LandscapeSize;
-    }
-
-    public String getMatrix() {
-        return matrix;
-    }
-
-    public String getInitialDirection() {
-        return initialDirection;
-    }
-
-    //refactor to one input into one print method
-    public void printCommandChain(){
-        System.out.println("Command input is " + commandChain  + "\n");
-    }
-
-    public void printLandscapeSize(){ System.out.println("Landscape size is set to " + LandscapeSize + "\n"); }
-
-    public void printInitialPosition(){ System.out.println("Rover is on initial position " + initialPosition  + "\n"); }
-
-    public void printFinalPosition() {System.out.println("Rover reached final position " + finalPosition + "\n");}
-
-    public void printmatrixChar() { System.out.print("Landscape matrix is " + matrix + "\n");}
+    public String getInitialDirection() { return initialDirection; }
 }
+
+

@@ -1,5 +1,7 @@
 package dk.cngroup.university;
 
+import static dk.cngroup.university.Field.ACCESSIBLE;
+
 public class Landscape {
 
     private Field[][] landscape;
@@ -55,7 +57,7 @@ public class Landscape {
             return false;
         }
         Field field = landscape[pos.getX()][pos.getY()];
-        return field == Field.ACCESSIBLE;
+        return field == ACCESSIBLE;
     }
 
 }

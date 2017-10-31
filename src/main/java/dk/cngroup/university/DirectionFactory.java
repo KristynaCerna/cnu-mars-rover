@@ -1,6 +1,5 @@
 package dk.cngroup.university;
 
-// prepisuje WorldSite na Direction
 public class DirectionFactory {
 
     public static Direction getDirection(WorldSide side) {
@@ -17,4 +16,5 @@ public class DirectionFactory {
         //should never happen
         throw new RuntimeException("unkonwn world side value");
     }
+
 }
