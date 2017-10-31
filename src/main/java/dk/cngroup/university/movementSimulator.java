@@ -39,7 +39,7 @@ public class movementSimulator {
             int landscapeSize = Integer.parseInt(lines[4]);
             Field[][] field = new Field[landscapeSize][landscapeSize];
             String matrix =lines[6].replaceAll("\n", "");
-            landscape.getLandscapeFromUserInput(matrix,landscapeSize,field);
+            ConvertInput.getLandscapeFromUserInput(matrix,landscapeSize,field);
 
             mars = new Mars(rover,landscape, initialPosition);
 
