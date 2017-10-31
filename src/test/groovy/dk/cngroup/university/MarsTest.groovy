@@ -49,7 +49,7 @@ class MarsTest extends Specification {
         RandomFieldGenerator generator = Mock(RandomFieldGenerator)
         generator.getRandomField() >>> [INACCESSIBLE, INACCESSIBLE, ACCESSIBLE]
 
-        Landscape landscape = new Landscape(generator, 3, userGenerator)
+        Landscape landscape = new Landscape(generator, 3)
 
         def position = new RoverPosition(0, 2)
 
@@ -114,7 +114,7 @@ class MarsTest extends Specification {
         RandomFieldGenerator generator = Mock(RandomFieldGenerator)
         generator.getRandomField() >>> [INACCESSIBLE, INACCESSIBLE, ACCESSIBLE]
 
-        Landscape landscape = new Landscape(generator, 3, userGenerator)
+        Landscape landscape = new Landscape(generator, 3)
 
         def position = new RoverPosition(0, 2)
 

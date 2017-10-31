@@ -38,7 +38,7 @@ public class movementSimulator {
             Direction direction = ConvertInput.getDirectionFromInput(lines[2]);
             rover = new Rover(direction);
 
-            int landscapeSize = Integer.parseInt(lines[3]);
+            int landscapeSize = Integer.parseInt(lines[4]);
             Field[][] field = new Field[landscapeSize][landscapeSize];
             String matrix = "";
             for (int i = 0; i > landscapeSize; i++)
@@ -47,9 +47,9 @@ public class movementSimulator {
 
             mars = new Mars(rover,landscape, initialPosition);
 
-            finalPosition = ConvertInput.getFinalPositionFromInput(lines[5 + landscapeSize]);
+            finalPosition = ConvertInput.getFinalPositionFromInput(lines[12]);
 
-            commandChain = lines [6 + landscapeSize];
+            commandChain = lines [7];
         }
 
         public RoverPosition moveRover(String commandChain) {

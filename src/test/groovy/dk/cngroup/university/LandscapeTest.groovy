@@ -26,23 +26,22 @@ class LandscapeTest extends Specification{
             landscape.getLandscape()== testLandscape
     }
 
-    def"should print to string"(){
+    void "should print to string"() {
         given:
         RandomFieldGenerator generator = Mock(RandomFieldGenerator)
-        generator.getRandomField() >>> [INACCESSIBLE,INACCESSIBLE,ACCESSIBLE]
+        generator.getRandomField() >>> [INACCESSIBLE, INACCESSIBLE, ACCESSIBLE]
 
         Landscape landscape = new Landscape(generator, 3)
 
         when:
-        String result = landscape.toString()
+        String result = landscape.toString();
 
         then:
         result == """00.
-                  ...
-                  ...
-                  """
+...
+...
+"""
     }
-
 
     @Unroll
     "shold return #isAccessible for #position" (boolean isAccessible, int x, int y) {
@@ -68,24 +67,4 @@ class LandscapeTest extends Specification{
         false |-1|6
     }
 
-    @Unroll
-    "should return landscape with size from data"(){
-
-        given:
-
-        def input = ".0....0.."
-
-        def squareSize = 3
-
-        def Field = new Field[squareSize][squareSize]
-
-        def landscapeTest = new  Landscape(input, squareSize)
-
-        when:
-
-        def landscape = Landscape.createLandscapeFromUserInput(input,squareSize)
-
-        then:
-        landscape.toString().equals(landscapeTest.toString())
-    }
 }

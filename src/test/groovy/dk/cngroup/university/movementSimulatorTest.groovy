@@ -22,7 +22,8 @@ class movementSimulatorTest extends Specification {
 
         def mars = new Mars(rover, landscape, position)
 
-        def movement = new movementSimulator(mars, rover, landscape,position)
+        def movement = new movementSimulator(mars, rover, landscape,position,null)
+
         when:
 
         def newPosition = movement.moveRover("B")
@@ -60,7 +61,7 @@ class movementSimulatorTest extends Specification {
 
         def mars = new Mars(rover, landscape, position)
 
-        def movement = new movementSimulator(mars, rover, landscape,position)
+        def movement = new movementSimulator(mars, rover, landscape,position,null)
 
         when:
 
@@ -103,9 +104,15 @@ class movementSimulatorTest extends Specification {
 
         def movementSimulator = new movementSimulator(inputFromText)
 
+        def rover = new Rover(direction)
+
+        Landscape landscape = new Landscape(matrix,landscapeSize,field)
+
         when:
 
         movementSimulator.obtainInputData()
+
+
 
         def mars = new Mars(rover, landscape, position)
 
