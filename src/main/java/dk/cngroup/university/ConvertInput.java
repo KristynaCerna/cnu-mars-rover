@@ -24,17 +24,15 @@ public class ConvertInput {
         Field[][] fieldFromInput = new Field[landscapeSize][landscapeSize];
         return fieldFromInput;
     }
-
     public static Landscape getLandscapeFromUserInput(String matrix,int landscapeSize, Field[][] fieldFromInput){
         String[] lines = matrix.split("\n");
         for (int i = 0; i < landscapeSize; i++) {
             String line = lines[i];
             for (int j = 0; j < landscapeSize; j++){
-                fieldFromInput [i][j] = Field.getFieldFromInput(line.charAt(j));
+                fieldFromInput [i][j] = AccessibilityChecker.checkAccessibility(line.charAt(j));
             }
         }
         return new Landscape(fieldFromInput);
     }
 }
-
 

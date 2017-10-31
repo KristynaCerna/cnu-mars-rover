@@ -10,11 +10,12 @@ public class movementSimulator {
     private String commandChain;
 
 
-    public movementSimulator(Mars mars, Rover rover, Landscape landscape, RoverPosition position) {
+    public movementSimulator(Mars mars, Rover rover, Landscape landscape, RoverPosition position, String inputFromText) {
         this.mars = mars;
         this.rover = rover;
         this.landscape = landscape;
         this.position = position;
+        this.inputFromText = inputFromText;
     }
 
     public boolean reachedFinalPosition(){
@@ -30,7 +31,7 @@ public class movementSimulator {
 
         public void obtainInputData(){
 
-            String[] lines = inputFromText.split("\n");
+            String[] lines = inputFromText.split("\\n");
 
             initialPosition = ConvertInput.getInitialPositionFromInput(lines[0]);
 
@@ -75,6 +76,8 @@ public class movementSimulator {
             }
             return getPosition();
         }
+
+    public Mars getMars() { return mars; }
 
     public RoverPosition getPosition() {
         return this.position;

@@ -81,5 +81,38 @@ class movementSimulatorTest extends Specification {
         SOUTH    |1|2
     }
 
+    @Unroll
+    "should obtain input data"() {
+        given:
 
+        def inputFromText = "1,0\n" +
+                "\n" +
+                "N" +
+                "\n" +
+                "5\n" +
+                "\n" +
+                "..0..\n" +
+                ".....\n" +
+                ".0..0\n" +
+                ".0...\n" +
+                ".....\n" +
+                "\n" +
+                "2,4" +
+                "\n" +
+                "RRFLFRFF"
+
+        def movementSimulator = new movementSimulator(inputFromText)
+
+        when:
+
+        movementSimulator.obtainInputData()
+
+        def mars = new Mars(rover, landscape, position)
+
+        then:
+
+        mars.getPosition().getX() == 1
+        mars.getPosition().getY() == 0
+
+    }
 }
