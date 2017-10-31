@@ -25,7 +25,7 @@ public class InputFromUser {
 
     public void recordInput(){
         landscapeMatrixFromUser();
-        lanscapeSizeFromUser();
+        landscapeSizeFromUser();
         initialPositionFromUser();
         finalPositionFromUser();
         commandChainFromUser();
@@ -59,7 +59,7 @@ public class InputFromUser {
         return new RoverPosition(Integer.parseInt(parts[0]),Integer.parseInt(parts[1]));
     }
 
-    public int lanscapeSizeFromUser(){
+    public int landscapeSizeFromUser(){
         System.out.println("Enter the size of your simulation landfield: ");
         Scanner sc = new Scanner(System.in);
         String size = sc.nextLine();

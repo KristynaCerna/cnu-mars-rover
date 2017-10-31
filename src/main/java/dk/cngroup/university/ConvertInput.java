@@ -18,8 +18,7 @@ public class ConvertInput {
 
      public static Field [][] getFieldFromUserInput(String squareSize) {
         int landscapeSize = Integer.parseInt(squareSize);
-        Field[][] fieldFromInput = new Field[landscapeSize][landscapeSize];
-        return fieldFromInput;
+         return new Field[landscapeSize][landscapeSize];
     }
     public static Landscape getLandscapeFromUserInput(String matrix,int landscapeSize, Field[][] fieldFromInput){
         String[] lines = matrix.split("\n");

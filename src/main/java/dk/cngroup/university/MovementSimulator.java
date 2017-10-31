@@ -1,30 +1,31 @@
 package dk.cngroup.university;
 
-public class movementSimulator {
+ public class MovementSimulator {
+
     private Mars mars;
     private Rover rover;
     private Landscape landscape;
-    public RoverPosition position;
+    private RoverPosition position;
     private RoverPosition initialPosition, finalPosition;
     private String inputFromText;
     private String commandChain;
+    private String[] lines;
 
 
-    public movementSimulator(Mars mars, Rover rover, Landscape landscape, RoverPosition position, String inputFromText) {
+    public MovementSimulator(Mars mars, Rover rover, Landscape landscape, RoverPosition position) {
         this.mars = mars;
         this.rover = rover;
         this.landscape = landscape;
         this.position = position;
-        this.inputFromText = inputFromText;
     }
 
     public boolean reachedFinalPosition(){
+        System.out.print("Initial position is " + initialPosition + "\n");
         moveRover(commandChain);
         return finalPosition.equals(mars.getPosition());
-
     }
 
-    public movementSimulator(String inputFromText){
+    public MovementSimulator(String inputFromText){
         this.inputFromText = inputFromText;
         obtainInputData();
     }
@@ -33,10 +34,26 @@ public class movementSimulator {
 
             String[] lines = inputFromText.split("\\n");
 
+
+            /*System.out.print("System received input : "+ "\n" + lines[0] + "\n" + lines[1] + "\n" + lines[2] + "\n"
+                                                              + lines[3] + "\n" + lines[4] + "\n" + lines[5] + "\n"
+                                                              + lines[6] + "\n" + lines[7] + "\n" + lines[8] + "\n"
+                                                              + lines[9] + "\n" + lines[10] + "\n" + lines[11] + "\n"
+                                                              + lines[12] + "\n" + lines[13] + "\n"+ lines[14] + "\n");*/
+
+            String ip = lines[0];
+            String d = lines[2];
+            String ls = lines[4];
+            System.out.print(0);
+
             initialPosition = ConvertInput.getInitialPositionFromInput(lines[0]);
+
+            System.out.print("\n" + initialPosition + "\n");
 
             Direction direction = ConvertInput.getDirectionFromInput(lines[2]);
             rover = new Rover(direction);
+
+            System.out.print("\n" + direction + "\n");
 
             int landscapeSize = Integer.parseInt(lines[4]);
             Field[][] field = new Field[landscapeSize][landscapeSize];
@@ -45,11 +62,18 @@ public class movementSimulator {
                  matrix += lines[4 + i] + "\n";
             landscape = ConvertInput.getLandscapeFromUserInput(matrix,landscapeSize,field);
 
+            System.out.print("\n" + landscapeSize + "\n");
+
             mars = new Mars(rover,landscape, initialPosition);
 
             finalPosition = ConvertInput.getFinalPositionFromInput(lines[12]);
 
-            commandChain = lines [7];
+            System.out.print("\n" + finalPosition + "\n");
+
+            commandChain = lines [14];
+
+            System.out.print("\n" + commandChain + "\n");
+
         }
 
         public RoverPosition moveRover(String commandChain) {
@@ -78,4 +102,8 @@ public class movementSimulator {
     public RoverPosition getPosition() {
         return this.position;
     }
+
+
+
+
 }

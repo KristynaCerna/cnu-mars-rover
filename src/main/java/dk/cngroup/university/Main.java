@@ -21,7 +21,7 @@ public class Main {
                "\n"    +
                "RRFLFRFF";
 
-       movementSimulator simulator = new movementSimulator(inputFromText);
+       MovementSimulator simulator = new MovementSimulator(inputFromText);
        boolean result = simulator.reachedFinalPosition();
        System.out.print("Simulation of mars rover reached final position - " + result);
 
