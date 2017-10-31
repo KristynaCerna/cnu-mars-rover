@@ -19,5 +19,21 @@ public class ConvertInput {
         return DirectionFactory.getDirectionFromString(initialDirection);
     }
 
+     public static Field [][] getFieldFromUserInput(int squareSize) {
+        Field[][] fieldFromInput = new
+                Field[squareSize][squareSize];
+        return fieldFromInput;
+    }
+
+    public static Landscape getLandscapeFromUserInput(String matrix,int squareSize, Field[][] fieldFromInput){
+        String[] lines = matrix.split(" ");
+        for (int i = 0; i < squareSize; i++) {
+            String lineOfField = lines[i];
+            for (int j = 0; j < squareSize; j++){
+                fieldFromInput [i][j] = Field.getFieldFromInput(lineOfField.charAt(j));
+            }
+        }
+        return new Landscape(fieldFromInput);
+    }
 }
 
