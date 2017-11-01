@@ -35,6 +35,6 @@ public enum Direction {
                 return Direction.WEST;
         }
         //should never happen
-        throw new RuntimeException("unkonwn world side value");
+        throw new RuntimeException("unkown world side value");
     }
 }

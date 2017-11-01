@@ -106,7 +106,7 @@ class MarsTest extends Specification {
     }
 
     @Unroll
-    "should move backward to #direction with obstables"(Direction direction, int x, int y){
+    "should move backward to #direction with obstacles"(Direction direction, int x, int y){
         given:
         def rover = Mock(Rover)
         rover.getDirection() >> direction

@@ -44,7 +44,7 @@ class LandscapeTest extends Specification{
     }
 
     @Unroll
-    "shold return #isAccessible for #position" (boolean isAccessible, int x, int y) {
+    "should return #isAccessible for #position" (boolean isAccessible, int x, int y) {
         given:
         RandomFieldGenerator generator = Mock(RandomFieldGenerator)
         generator.getRandomField() >>>

@@ -8,7 +8,7 @@ public class AccessibilityChecker {
         } else if (input == '0') {
             return Field.INACCESSIBLE;
         } else { //should never happen
-            throw new RuntimeException("unkonwn field input value");
+            throw new RuntimeException("unkown field input value");
         }
     }
 }
