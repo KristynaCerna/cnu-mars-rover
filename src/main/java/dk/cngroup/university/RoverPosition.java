@@ -9,6 +9,14 @@ public class RoverPosition {
         this.y = y;
     }
 
+    @Override
+    public String toString() {
+        return "RoverPosition{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
+
     public int getX() {
         return x;
     }
@@ -21,6 +29,11 @@ public class RoverPosition {
         this.x = x;
         return x;
     }
+
+
+
+
+
 
     public int setY(int y) {
         this.y = y;

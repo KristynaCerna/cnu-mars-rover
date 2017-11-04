@@ -20,8 +20,9 @@ package dk.cngroup.university;
     }
 
     public boolean reachedFinalPosition(){
-        System.out.print("Initial position is " + initialPosition + "\n");
+        System.out.print("Initial position is " + initialPosition + "\n"); // Used to check if simulator is working
         moveRover(commandChain);
+        System.out.print(position);
         return finalPosition.equals(mars.getPosition());
     }
 
@@ -81,17 +82,20 @@ package dk.cngroup.university;
             for (char command : commands) {
                 switch (command) {
                     case 'F':
-                        return mars.moveForward();
+                        mars.moveForward();
+                        break;
                     case 'B':
-                        return mars.moveBackward();
+                        mars.moveBackward();
+                        break;
                     case 'L':
                         rover.turnLeft();
-                        return position;
+                        break;
                     case 'R':
                         rover.turnRight();
-                        return position;
+                        break;
                     case 'D':
-                        return mars.dontMove();
+                        mars.dontMove();
+                        break;
                 }
             }
             return position;
